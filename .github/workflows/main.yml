@@ -34,7 +34,10 @@ jobs:
 
           # Not required, but speeds up builds
           githubToken: ${{ github.token }}
-          
+          # Create an artifacts directory
+          setup: |
+            ls
+            mkdir -p "${PWD}/artifacts"
           # The shell to run commands with in the container
           shell: /bin/sh
           install: |
@@ -56,6 +59,7 @@ jobs:
           run: |
             export GOARM=7
             export GOARCH=arm
+            git status
             wget https://golang.org/dl/go1.15.linux-armv6l.tar.gz
             tar -C /usr/local -xzf go1.15.linux-armv6l.tar.gz
             export PATH=$PATH:/usr/local/go/bin
@@ -63,11 +67,3 @@ jobs:
             go version
             uname -o
             uname -m
-            
-      - name: Show the artifact
-        # Items placed in /artifacts in the container will be in
-        # ${PWD}/artifacts on the host.
-        run: |
-          ls -al "${PWD}/artifacts"
-          uname -o
-          uname -m
