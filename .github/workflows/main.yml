@@ -1,6 +1,14 @@
 name: A workflow for my Hello World file
 on: [push, pull_request]
 jobs:
+  x64_job:
+    name: Build on x64 linux distro
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ./action-a
+        with:
+          MY_NAME: "Mona"
   build_job:
     name: Build on ${{ matrix.distro }} ${{ matrix.arch }}
     runs-on: ubuntu-latest
