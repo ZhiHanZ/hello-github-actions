@@ -48,6 +48,7 @@ jobs:
                 apt-get update -q -y
                 apt-get install -q -y git
                 apt-get install -q -y wget
+                apt-get install -q -y build-essential
                 ;;
               fedora*)
                 dnf -y update
