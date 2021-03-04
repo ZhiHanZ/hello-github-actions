@@ -38,6 +38,8 @@ jobs:
           setup: |
             ls
             mkdir -p "${PWD}/artifacts"
+          dockerRunArgs: |
+            --volume "${PWD} :/workdir"
           # The shell to run commands with in the container
           shell: /bin/sh
           install: |
@@ -63,7 +65,8 @@ jobs:
             wget https://golang.org/dl/go1.15.linux-armv6l.tar.gz
             tar -C /usr/local -xzf go1.15.linux-armv6l.tar.gz
             export PATH=$PATH:/usr/local/go/bin
-            
+            cd workdir
             go version
+            go run main.go
             uname -o
             uname -m
