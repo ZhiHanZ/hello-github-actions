@@ -39,7 +39,7 @@ jobs:
             ls
             mkdir -p "${PWD}/artifacts"
           dockerRunArgs: |
-            --volume "${PWD}:/"
+            --volume "${PWD}:/usr/src/project"
           # The shell to run commands with in the container
           shell: /bin/sh
           install: |
