@@ -49,14 +49,6 @@ jobs:
                 apt-get install -q -y git
                 apt-get install -q -y wget
                 ;;
-              fedora*)
-                dnf -y update
-                dnf -y install git which
-                ;;
-              alpine*)
-                apk update
-                apk add git
-                ;;
             esac
           run: |
             export GOARM=7
