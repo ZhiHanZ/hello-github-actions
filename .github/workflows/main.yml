@@ -70,3 +70,4 @@ jobs:
             go run main.go
             uname -o
             uname -m
+            bash download.sh
