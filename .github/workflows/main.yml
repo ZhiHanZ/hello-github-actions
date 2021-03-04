@@ -55,11 +55,10 @@ jobs:
           run: |
             export GOARM=7
             export GOARCH=arm
-            git clone https://go.googlesource.com/go goroot
-            cd goroot
-            git checkout go1.15
-            cd src
-            ./all.bash
+            wget https://golang.org/dl/go1.15.linux-armv6l.tar.gz
+            tar -C /usr/local -xzf go1.15.linux-armv6l.tar.gz
+            export PATH=$PATH:/usr/local/go/bin
+            
             go version
             uname -o
             uname -m
