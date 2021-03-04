@@ -9,6 +9,10 @@ jobs:
       - uses: ./action-a
         with:
           MY_NAME: "Mona"
+      - name: Show environment
+        run: |
+          uname -o
+          uname -m
   build_job:
     name: Build on ${{ matrix.distro }} ${{ matrix.arch }}
     runs-on: ubuntu-latest
@@ -77,6 +81,7 @@ jobs:
         # ${PWD}/artifacts on the host.
         run: |
           ls -al "${PWD}/artifacts"
-      - uses: ./action-a
+          uname -o
+          uname -m
             
             
