@@ -53,3 +53,10 @@ jobs:
         -H "Content-Type: application/json"
         --data '{"state":"success","context":"dispatch_start-status","target_url":"'$GITHUB_STATUS_TARGET_URL'"}'
         "https://api.github.com/repos/$GITHUB_REPOSITORY/statuses/$LAST_COMMIT_SHA"
+    - name: Prepare step 2
+      run: |
+        uname -o
+        uname -m
+        echo "abcd" > test.txt
+        echo "field: ${{ github.event.client_payload.BENCH_FUNC_REGEX }}"
+        echo "payload: ${{ toJson(github.event.client_payload) }}"
