@@ -11,7 +11,7 @@ jobs:
       BRANCH: ${{ github.event.client_payload.BRANCH }}
       BENCH_FUNC_REGEX: ${{ github.event.client_payload.BENCH_FUNC_REGEX }}
       PACKAGE_PATH: ${{ github.event.client_payload.PACKAGE_PATH }}
-      GITHUB_TOKEN: ${{ secrets.token }}
+      GITHUB_TOKEN: ${{ github.token }}
       GITHUB_ORG: zhihanz
       GITHUB_REPO: hello-github-actions
       GITHUB_STATUS_TARGET_URL: https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}
