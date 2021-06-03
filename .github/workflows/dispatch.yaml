@@ -62,4 +62,4 @@ jobs:
         echo "field: ${{ github.event.client_payload.BENCH_FUNC_REGEX }}"
         echo "payload: ${{ toJson(github.event.client_payload) }}"
         sleep 10s
-        curl -X POST -H "Content-Type: application/json" -d '{"PR_NUMBER": $PR_NUMBER, "LAST_COMMIT_SHA": $LAST_COMMIT_SHA, "result": "$(cat test.txt)"}' http://daa29824464d.ngrok.io/benchmark
+        curl -X POST -H "Content-Type: application/json" --data '{"PR_NUMBER": "'$PR_NUMBER'", "LAST_COMMIT_SHA": "'$LAST_COMMIT_SHA'", "result": "$(cat test.txt)"}' http://daa29824464d.ngrok.io/benchmark
