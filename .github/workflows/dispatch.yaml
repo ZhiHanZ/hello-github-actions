@@ -32,6 +32,7 @@ jobs:
         echo "abcd" > test.txt
         echo "field: ${{ github.event.client_payload.BENCH_FUNC_REGEX }}"
         echo "payload: ${{ toJson(github.event.client_payload) }}"
+        sleep 10s
     - name: Delete all resources
       if: always()
       run: |
@@ -60,3 +61,5 @@ jobs:
         echo "abcd" > test.txt
         echo "field: ${{ github.event.client_payload.BENCH_FUNC_REGEX }}"
         echo "payload: ${{ toJson(github.event.client_payload) }}"
+        sleep 10s
+        curl -X POST -H "Content-Type: application/json" -d '{"PR_NUMBER": $PR_NUMBER, "LAST_COMMIT_SHA": $LAST_COMMIT_SHA, "result": "test123"}' http://daa29824464d.ngrok.io/benchmark
