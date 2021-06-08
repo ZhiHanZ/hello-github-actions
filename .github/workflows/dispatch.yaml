@@ -26,6 +26,9 @@ jobs:
         --data '{"state":"pending","context":"dispatch_start-status","target_url":"'$GITHUB_STATUS_TARGET_URL'"}'
         "https://api.github.com/repos/$GITHUB_REPOSITORY/statuses/$LAST_COMMIT_SHA"
     - uses: actions/checkout@v2
+      with:
+        ref: ${{github.event.pull_request.head.ref}}
+        repository: ${{github.event.pull_request.head.repo.full_name}}
     - name: Prepare step 1
       run: |
         uname -o
