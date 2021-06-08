@@ -27,8 +27,7 @@ jobs:
         "https://api.github.com/repos/$GITHUB_REPOSITORY/statuses/$LAST_COMMIT_SHA"
     - uses: actions/checkout@v2
       with:
-        ref: ${{ github.event.pull_request.head.sha }}
-        fetch-depth: 0
+        ref: f96d3814145b2668e3f1dbc63e0e8d2bb07c32fb
     - name: Prepare step 1
       run: |
         uname -o
