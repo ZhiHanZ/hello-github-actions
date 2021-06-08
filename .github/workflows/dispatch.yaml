@@ -39,7 +39,7 @@ jobs:
         sleep 10s
         ls
         git log
-        git checkout "'$LAST_COMMIT_SHA'"
+        git branch
         git log
     - name: Delete all resources
       if: always()
