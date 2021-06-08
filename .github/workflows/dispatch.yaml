@@ -27,7 +27,7 @@ jobs:
         "https://api.github.com/repos/$GITHUB_REPOSITORY/statuses/$LAST_COMMIT_SHA"
     - uses: actions/checkout@v2
       with:
-        ref: f96d3814145b2668e3f1dbc63e0e8d2bb07c32fb
+        ref: v0.1.0-nighly
     - name: Prepare step 1
       run: |
         uname -o
