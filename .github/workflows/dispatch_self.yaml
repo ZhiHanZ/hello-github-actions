@@ -29,10 +29,10 @@ jobs:
       with:
         ref: v0.1.0-nighly
     - uses: AbsaOSS/k3d-action@v1.4.0
-        name: "Create Single Cluster"
-        with:
-          cluster-name: "test-cluster-1"
-          args: --agents 1
+      name: "Create Single Cluster"
+      with:
+        cluster-name: "test-cluster-1"
+        args: --agents 1
     - name: Prepare step 1
       run: |
         uname -o
