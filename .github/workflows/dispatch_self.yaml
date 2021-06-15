@@ -1,6 +1,6 @@
 on:
   repository_dispatch:
-    types: [dispatch_start_self_hosted]
+    types: [run-perf]
 name: Comment Dispatch workflow Workflow
 jobs:
   run_funcbench:
