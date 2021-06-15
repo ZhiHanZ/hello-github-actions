@@ -28,6 +28,19 @@ jobs:
     - uses: actions/checkout@v2
       with:
         ref: v0.1.0-nighly
+    - name: dependency hack on self hosted machine
+        if: steps.check.outputs.triggered == 'true'
+        run: |
+          sudo wget http://archive.ubuntu.com/ubuntu/pool/main/p/psmisc/psmisc_23.3-1_amd64.deb
+          sudo dpkg -i ./psmisc_23.3-1_amd64.deb
+          sudo apt-get update
+          sudo apt-get install mysql-client -y
+          sudo apt-get install -y apt-transport-https ca-certificates curl
+          sudo curl -fsSLo /usr/share/keyrings/kubernetes-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg
+          echo "deb [signed-by=/usr/share/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
+          sudo apt-get update
+          sudo apt-get install -y kubectl
+
     - uses: AbsaOSS/k3d-action@v1.4.0
       name: "Create Single Cluster"
       with:
