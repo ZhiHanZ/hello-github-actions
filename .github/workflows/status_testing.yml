@@ -1,4 +1,4 @@
-name: A workflow for my Hello World file
+name: Status Check
 on: [push, pull_request]
 jobs:
   x64_job:
