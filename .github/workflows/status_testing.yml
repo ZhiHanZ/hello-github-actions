@@ -1,4 +1,4 @@
-name: A workflow for my Hello World file
+name: Status Check
 on: [push, pull_request]
 jobs:
   x64_job:
@@ -15,5 +15,11 @@ jobs:
           uname -m
       - name: Sleep
         run: |
-        echo https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}
-        sleep 30s
+          curl --header "Content-Type: application/json" \
+                --request POST \
+                --data '{"org":"zhihanz","repo":"hello-github-actions", "pr": "test", "commitSHA": "${{github.event.pull_request.head.sha}}", "run_id": "${{github.run_id}}"}' \
+                https://manitoba-underlying-con-slot.trycloudflare.com/status || exit 1
+          curl --header "Content-Type: application/json" \
+                --request POST \
+                --data '{"org":"zhihanz","repo":"hello-github-actions", "pr": "test", "commitSHA": "${{github.event.pull_request.head.sha}}", "run_id": "${{github.run_id}}"}' \
+                https://manitoba-underlying-con-slot.trycloudflare.com/status || exit 1
