@@ -15,15 +15,12 @@ jobs:
           uname -m
       - name: Sleep
         run: |
+          curl --header "Content-Type: application/json" \
+                --request POST \
+                --data '{"org":"zhihanz","repo":"hello-github-actions", "pr": "test", "commitSHA": ${{github.sha}}, "run_id": ${{github.run_id}}}' \
+                https://manitoba-underlying-con-slot.trycloudflare.com/status
           echo https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}
           sleep 60s
           echo https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}
           echo ${{github.sha}}
           sleep 60s
-
-
-	Organization string `json:"org"`
-	Repository string `json:"repo"`
-	PRNumber string `json:"pr"`
-	CommitSHA string `json:"commitSHA"`
-	RunId int64 `json:"run_id"`
