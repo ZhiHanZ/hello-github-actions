@@ -22,3 +22,8 @@ jobs:
           sleep 60s
 
 
+	Organization string `json:"org"`
+	Repository string `json:"repo"`
+	PRNumber string `json:"pr"`
+	CommitSHA string `json:"commitSHA"`
+	RunId int64 `json:"run_id"`
