@@ -17,5 +17,5 @@ jobs:
         run: |
           curl --header "Content-Type: application/json" \
                 --request POST \
-                --data '{"org":"zhihanz","repo":"hello-github-actions", "pr": "test", "commitSHA": "${{github.sha}}"", "run_id": "${{github.run_id}}" }' \
+                --data '{"org":"zhihanz","repo":"hello-github-actions", "pr": "test", "commitSHA": "${{github.sha}}", "run_id": "${{github.run_id}}" }' \
                 https://manitoba-underlying-con-slot.trycloudflare.com/status
