@@ -1,0 +1,19 @@
+name: A workflow for my Hello World file
+on: [push, pull_request]
+jobs:
+  test_on_stateful:
+    name: Build on x64 linux distro
+    runs-on: stateful-runner
+    env:
+      DATASET_LOCATION: /home/runner/dataset/test.txt
+    steps:
+      - name: check data
+        run: |
+          if [[ -f "$DATASET_LOCATION" ]]; then
+              echo "$DATASET_LOCATION exists."
+          fi
+          if [[ ! -f "$DATASET_LOCATION" ]]; then
+              echo "$DATASET_LOCATION does not exists."
+              echo "test,stateful,123" > /home/runner/dataset/test.txt
+          fi
+
